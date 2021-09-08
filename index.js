@@ -14,6 +14,14 @@ const configFileName = "config.json"
 
 const env = process.argv[process.argv.length - 1]
 
+if (env == '--update') {
+  console.log("Updating gcli...")
+  shell("cd ~/gcli/gcli git pull");
+  const FgGreen = "\x1b[32m"
+  console.log(FgGreen, `\n🎉 Successful updated`);
+  return;
+}
+
 if (process.argv.length == 2) {
   const FgGreen = "\x1b[32m"
   console.log(FgGreen, `\n🎉 Welcome to gcli, to configure your first env type:`);
@@ -118,6 +126,7 @@ function shell(command) {
   return new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
       if (error) {
+        console.log(error)
           reject(error)
           return;
       }
@@ -125,7 +134,8 @@ function shell(command) {
           //console.log(`stderr: ${stderr}`);
           return;
       }
-      resolve(stdout)
+      console.log(`stdout: ${stdout}`);
+      
      // console.log(`stdout: ${stdout}`);
     });
   })
