@@ -1,7 +1,7 @@
-cd /usr/local
-ls -la
-#git clone git@github.com:daflecardoso/gcli.git
-#chmod 777 -R gcli
-#cd gcli
-#npm install
-#gcli
+cd ~/
+mkdir code
+cd code
+git clone git@github.com:daflecardoso/gcli.git
+cd gcli
+npm install
+gcli
