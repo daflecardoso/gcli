@@ -15,3 +15,7 @@ remove env:
 
 ```gcli -d <env>```
 
+## update gcli
+
+```gcli --update```
+
