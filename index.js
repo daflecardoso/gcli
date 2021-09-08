@@ -14,6 +14,13 @@ const configFileName = "config.json"
 
 const env = process.argv[process.argv.length - 1]
 
+if (process.argv.length == 2) {
+  const FgGreen = "\x1b[32m"
+  console.log(FgGreen, `\n🎉 Welcome to gcli, to configure your first env type:`);
+  console.log('$ gcli <env>')
+  return
+}
+
 if (process.argv.includes('-d')) {
   if (env != '-d') {
     const FgGreen = "\x1b[32m"
