@@ -10,5 +10,6 @@ sudo chmod 777 gcli
 cd gcli
 git clone git@github.com:daflecardoso/gcli.git
 cd gcli
+npm install
 npm install -g
 gcli
