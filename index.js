@@ -138,8 +138,7 @@ function shell(command) {
           return;
       }
       //console.log(`stdout: ${stdout}`);
-      
-     // console.log(`stdout: ${stdout}`);
+      resolve(stdout);
     });
   })
 }
