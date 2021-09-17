@@ -1,5 +1,5 @@
 # gcli
-Helper for semantic commit
+Helper for conventional commits
 
 ## instalation
 
