@@ -25,8 +25,6 @@ create a ```gcli.json``` file root project
 
 ## usage
 
-create a new env:
-
 ```gcli```
 
 ## update gcli
