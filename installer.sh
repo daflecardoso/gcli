@@ -7,6 +7,7 @@ fi
 
 mkdir gcli
 sudo chmod 777 gcli
+sudo chown -R $USER /usr/local/lib/node_modules
 cd gcli
 git clone git@github.com:daflecardoso/gcli.git
 cd gcli
