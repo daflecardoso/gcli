@@ -5,15 +5,29 @@ Helper for conventional commits
 
 ```curl -s https://raw.githubusercontent.com/daflecardoso/gcli/main/installer.sh | bash -s```
 
+## config
+
+create a ```gcli.json``` file root project
+
+```
+{
+  "name": "name",
+  "color": "#1476FF",
+  "showTutorial": false,
+  "scopes": [
+    "home",
+    "products",
+    "foo",
+    "bar"
+  ]
+}
+```
+
 ## usage
 
 create a new env:
 
-```gcli <env>```
-
-remove env:
-
-```gcli -d <env>```
+```gcli```
 
 ## update gcli
 
