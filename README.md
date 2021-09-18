@@ -3,7 +3,9 @@ Helper for conventional commits
 
 ## Instalation
 
-```curl -s https://raw.githubusercontent.com/daflecardoso/gcli/main/installer.sh | bash -s```
+```sh
+curl -s https://raw.githubusercontent.com/daflecardoso/gcli/main/installer.sh | bash -s
+```
 
 ## Setup
 
