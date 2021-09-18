@@ -9,7 +9,7 @@ Helper for conventional commits
 
 create a ```gcli.json``` file root project
 
-```yaml
+```json
 {
   "name": "name",
   "color": "#1476FF",
