@@ -27,9 +27,13 @@ create a ```gcli.json``` file root project
 
 ## Usage
 
-```gcli```
+```sh
+gcli
+```
 
 ## Update gcli
 
-```gcli --update```
+```sh
+gcli --update
+```
 
