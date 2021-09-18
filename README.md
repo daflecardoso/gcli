@@ -9,7 +9,7 @@ Helper for conventional commits
 
 create a ```gcli.json``` file root project
 
-```
+```javascript
 {
   "name": "name",
   "color": "#1476FF",
