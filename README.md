@@ -1,11 +1,11 @@
 # gcli
 Helper for conventional commits
 
-## instalation
+## Instalation
 
 ```curl -s https://raw.githubusercontent.com/daflecardoso/gcli/main/installer.sh | bash -s```
 
-## config
+## Setup
 
 create a ```gcli.json``` file root project
 
@@ -23,11 +23,11 @@ create a ```gcli.json``` file root project
 }
 ```
 
-## usage
+## Usage
 
 ```gcli```
 
-## update gcli
+## Update gcli
 
 ```gcli --update```
 
