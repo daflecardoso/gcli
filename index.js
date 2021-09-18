@@ -146,13 +146,31 @@ function shell(command) {
 const run = async () => {
   const commitType = await inquirer.askCommitType();
   
-  const contextType = await inquirer.askContextType(config.contextChoices);
+  var scopes = config.contextChoices;
+  try {
+    const file = path.resolve(".scopes");
+    let rawdata = fs.readFileSync(file);
+    scopes = rawdata.toString().split('\n').map((s) => s.trim());
+  } catch (e) {
+    
+  }
+
+  const contextType = await inquirer.askContextType(scopes);
 
   const commit = await inquirer.askCommitMessage();
+
+  const breakingChange = await inquirer.askBreakingChanges();
   
-  const commitMessage = `${commitType.ignore}(${contextType.ignore}): ${commit.message}`
+  var breakingMessage = breakingChange.message;
+
+  if (breakingMessage) {
+    breakingMessage = `\n\nBREAKING CHANGE: ${breakingMessage}`
+  }
+
+  const commitMessage = `${commitType.ignore}(${contextType.ignore}): ${commit.message}${breakingMessage}`
   console.log("\n")
-  console.log(commitMessage);
+  const FgGreen = "\x1b[33m"
+  console.log(FgGreen, commitMessage);
   console.log("\n")
 
   const isGood = await inquirer.askLooksLikeGood();
