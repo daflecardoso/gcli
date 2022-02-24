@@ -11,5 +11,6 @@ sudo chmod 777 -R gcli
 cd gcli
 echo "🧐 Installing dependencies"
 npm install
+npm install -g
 echo "😊 Finished"
 gcli
