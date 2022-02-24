@@ -7,5 +7,5 @@ fi
 
 git clone https://github.com/daflecardoso/gcli.git
 cd gcli
-npm install
+npm install -g
 gcli
