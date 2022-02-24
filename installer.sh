@@ -10,6 +10,6 @@ echo "🤩 Giving permission"
 sudo chmod 777 -R gcli
 cd gcli
 echo "🧐 Installing dependencies"
-npm install -g
+npm install
 echo "😊 Finished"
 gcli
