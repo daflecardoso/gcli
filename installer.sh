@@ -5,9 +5,6 @@ if [ -d "$DIR" ]; then
   echo "Removing dir ${DIR}..."
 fi
 
-mkdir gcli
-sudo chmod 777 gcli
-cd gcli
 git clone https://github.com/daflecardoso/gcli.git
 cd gcli
 npm install
