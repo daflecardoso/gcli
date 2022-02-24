@@ -7,7 +7,7 @@ fi
 echo "😜 Clone project"
 git clone https://github.com/daflecardoso/gcli.git
 echo "🤩 Giving permission"
-sudo chmod 777 -R gcli
+sudo chmod 777 gcli
 cd gcli
 echo "🧐 Installing dependencies"
 npm install -g
