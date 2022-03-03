@@ -75,17 +75,28 @@ const run = async () => {
   if (askIsGood.isGood) {
      
       const gitAdd = "git add ."
-      console.log(`✅ ${gitAdd}`)
       await shell(gitAdd);
+      console.log(`✅ ${gitAdd}`)
 
       const gitCommit = `git commit -m "${commitMessage}"`;
-      console.log(`✅ ${gitCommit}`)
-      await shell(gitCommit);
+      try {
+        const res = await shell(gitCommit);
+        console.log(`✅ ${gitCommit}`)
+        console.log(res)
+      } catch(err) {
+        console.log(`🔴 ${gitCommit}\n`);
+        console.log(err.message)
+      }
       
       const gitPush = `git push`;
-      console.log(`✅ ${gitPush}`);
-      const res = await shell(gitPush);
-      console.log(res)
+      try {
+        const res = await shell(gitPush);
+        console.log(`✅ ${gitPush}`);
+        console.log(res)
+      } catch (err) {
+        console.log(`🔴 ${gitPush}\n`);
+        console.log(err.message)
+      }
   }
 };
 
