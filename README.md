@@ -1,5 +1,7 @@
-# gcli
+## gcli
 Helper for conventional commits
+
+![Architecture](https://github.com/daflecardoso/gcli/blob/main/example.png)
 
 ## Instalation
 
