@@ -17,7 +17,7 @@ const env = process.argv[process.argv.length - 1]
 if (env == '--update') {
   console.log("Updating gcli...")
   shell(`
-  cd ~/gcli/gcli
+  cd ~/.gcli
   git pull
   `);
   console.log("\x1b[32m", `\n🎉 Successful updated`);
