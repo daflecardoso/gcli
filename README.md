@@ -1,5 +1,6 @@
 ## gcli
-Helper for conventional commits
+
+Helper for conventional commits, see more: https://www.conventionalcommits.org/en/v1.0.0/
 
 ![Architecture](https://github.com/daflecardoso/gcli/blob/main/example.png)
 
