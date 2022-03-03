@@ -1,0 +1,9 @@
+{
+  "name": "gcli",
+  "color": "#A020F0",
+  "showTutorial": false,
+  "scopes": [
+    "core",
+    "utils"
+  ]
+}
