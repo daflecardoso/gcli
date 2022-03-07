@@ -83,11 +83,15 @@ const run = async () => {
       console.log(`✅ ${gitCommit}`)
       
       const gitPush = `git push`;
-
+      console.log('im here 1')
       try {
+        console.log('im here 2')
         const res = await shell(gitPush);
+        console.log('im here 3')
         console.log(`✅ ${gitPush}`);
+        console.log('im here 4')
         console.log(res)
+        console.log('im here 5')
       } catch (err) {
         console.log(`🔴 ${gitPush}\n`);
         console.log(err.message)
