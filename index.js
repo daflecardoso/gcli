@@ -27,7 +27,7 @@ if (env == '--update') {
 const file = path.resolve(configFileName);
 if (!fs.existsSync(file)) { 
   console.log("\x1b[32m", `\nPlease create a ${configFileName} file`)
-  return
+  return;
 }
 
 let config = JSON.parse(fs.readFileSync(file));
