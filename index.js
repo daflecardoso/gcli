@@ -95,6 +95,7 @@ const run = async () => {
       } catch (err) {
         console.log(`🔴 ${gitPush}\n`);
         console.log(err.message)
+        console.log('add error log')
       }
   }
 };
