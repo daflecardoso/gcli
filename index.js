@@ -79,19 +79,12 @@ const run = async () => {
       console.log(`✅ ${gitAdd}`)
 
       const gitCommit = `git commit -m "${commitMessage}"`;
-      try {
-        const res = await shell(gitCommit);
-        console.log(`✅ ${gitCommit}`)
-        console.log(res)
-      } catch(err) {
-        console.log(`🔴 ${gitCommit}\n`);
-        console.log(err.message)
-      }
+      await shell(gitCommit);
+      console.log(`✅ ${gitCommit}`)
       
       const gitPush = `git push`;
-      console.log('test')
+
       try {
-        console.log('test 2')
         const res = await shell(gitPush);
         console.log('test 3')
         console.log(`✅ ${gitPush}`);
