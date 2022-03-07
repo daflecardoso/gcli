@@ -86,7 +86,6 @@ const run = async () => {
 
       try {
         const res = await shell(gitPush);
-        console.log('test 3')
         console.log(`✅ ${gitPush}`);
         console.log(res)
       } catch (err) {
