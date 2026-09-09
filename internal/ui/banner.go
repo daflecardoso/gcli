@@ -16,11 +16,20 @@ func Clear() {
 // equivalent.
 func Banner(name, hex string) {
 	c := HexColor(hex)
-	width := len(name) + 4
-	top := "┌" + strings.Repeat("─", width) + "┐"
-	bottom := "└" + strings.Repeat("─", width) + "┘"
+	top, middle, bottom := boxLines(name)
 
 	c.Println(top)
-	c.Printf("│  %s  │\n", strings.ToUpper(name))
+	c.Println(middle)
 	c.Println(bottom)
+}
+
+// boxLines builds the three lines of the banner box around name. It is
+// split out from Banner so the layout can be unit tested without capturing
+// stdout.
+func boxLines(name string) (top, middle, bottom string) {
+	width := len(name) + 4
+	top = "┌" + strings.Repeat("─", width) + "┐"
+	middle = fmt.Sprintf("│  %s  │", strings.ToUpper(name))
+	bottom = "└" + strings.Repeat("─", width) + "┘"
+	return top, middle, bottom
 }

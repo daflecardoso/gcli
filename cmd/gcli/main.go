@@ -5,16 +5,24 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/daflecardoso/gcli/internal/commit"
 	"github.com/daflecardoso/gcli/internal/config"
 	"github.com/daflecardoso/gcli/internal/gitutil"
 	"github.com/daflecardoso/gcli/internal/ui"
 	"github.com/daflecardoso/gcli/internal/update"
+	"github.com/daflecardoso/gcli/internal/version"
 )
 
 func main() {
-	if len(os.Args) > 1 && os.Args[len(os.Args)-1] == "--update" {
-		runUpdate()
-		return
+	if len(os.Args) > 1 {
+		switch os.Args[len(os.Args)-1] {
+		case "--update":
+			runUpdate()
+			return
+		case "--version", "-v":
+			fmt.Println("gcli " + version.String())
+			return
+		}
 	}
 
 	ui.Clear()
@@ -71,10 +79,7 @@ func run(cfg *config.Config) error {
 		return err
 	}
 
-	commitMessage := fmt.Sprintf("%s(%s): %s", commitType, scope, message)
-	if breaking != "" {
-		commitMessage += fmt.Sprintf("\n\nBREAKING CHANGE: %s", breaking)
-	}
+	commitMessage := commit.Build(commitType, scope, message, breaking)
 
 	fmt.Printf("\n\x1b[33m%s\x1b[0m\n\n", commitMessage)
 

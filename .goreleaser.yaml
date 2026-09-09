@@ -15,6 +15,11 @@ builds:
     goarch:
       - amd64
       - arm64
+    ldflags:
+      - -s -w
+      - -X github.com/daflecardoso/gcli/internal/version.Version={{ .Version }}
+      - -X github.com/daflecardoso/gcli/internal/version.Commit={{ .ShortCommit }}
+      - -X github.com/daflecardoso/gcli/internal/version.Date={{ .Date }}
 
 archives:
   - id: gcli
