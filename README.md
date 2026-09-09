@@ -4,15 +4,28 @@ Helper for conventional commits, see more: https://www.conventionalcommits.org/e
 
 ![Architecture](https://github.com/daflecardoso/gcli/blob/main/example.png)
 
-## Instalation
+A single native binary — no Node, no Go, no runtime required to run it.
+
+## Installation
+
+**Linux / macOS**
 
 ```sh
-curl -s https://raw.githubusercontent.com/daflecardoso/gcli/main/installer.sh | bash -s
+curl -fsSL https://raw.githubusercontent.com/daflecardoso/gcli/main/install.sh | sh
 ```
+
+**Windows (PowerShell)**
+
+```powershell
+iwr -useb https://raw.githubusercontent.com/daflecardoso/gcli/main/install.ps1 | iex
+```
+
+Both scripts detect your OS/architecture, download the matching binary from the
+[latest release](https://github.com/daflecardoso/gcli/releases/latest), and put it on your PATH.
 
 ## Setup
 
-create a ```gcli.json``` file root project
+Create a `gcli.json` file in the root of your project:
 
 ```json
 {
@@ -34,9 +47,32 @@ create a ```gcli.json``` file root project
 gcli
 ```
 
+It walks you through commit type, scope, message, and optional breaking change,
+then runs `git add .`, `git commit`, and `git push` for you.
+
 ## Update gcli
 
 ```sh
 gcli --update
 ```
 
+This re-runs the install script to fetch the latest release.
+
+## Building from source
+
+Requires Go 1.21+.
+
+```sh
+go build -o gcli ./cmd/gcli
+```
+
+## Releasing
+
+Tag a version and push it; CI (GitHub Actions + [GoReleaser](https://goreleaser.com))
+builds binaries for linux/macOS/windows (amd64/arm64) and publishes them as a GitHub
+Release, which `install.sh`/`install.ps1` always pull from `latest`.
+
+```sh
+git tag v1.0.0
+git push origin v1.0.0
+```
