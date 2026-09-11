@@ -34,7 +34,8 @@ runtime required to install or run it.
   change, producing a Conventional Commits message
 - Per-project configuration (`gcli.json`) — name, banner color, custom scopes
 - Runs `git add . && git commit && git push` once you confirm the message
-- Self-update (`gcli --update`) that always fetches the latest release
+- Self-update (`gcli --update`), fetching the latest release or, with
+  `gcli --update <version>`, a specific one
 - Single static binary for Linux, macOS, and Windows (amd64 + arm64) — nothing
   to install beyond the binary itself
 
@@ -88,7 +89,9 @@ gcli
 You'll be prompted for:
 
 1. Commit **type** (`feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`)
-2. **Scope** (one of the `scopes` from `gcli.json`)
+2. **Scope** — one of the `scopes` from `gcli.json`, or the highlighted
+   **Custom** option (always first) to type a scope on the spot; typed
+   scopes are slugified (lowercased, spaces to hyphens)
 3. Commit **message**
 4. Optional **breaking change** description
 
@@ -106,8 +109,20 @@ git push
 gcli --update
 ```
 
-This re-runs the install script, which always pulls the binary tagged
-`latest` on GitHub Releases.
+This re-runs the install script, which pulls the binary tagged `latest`
+on GitHub Releases.
+
+To install a specific version instead, pass its tag:
+
+```sh
+gcli --update v0.1.0
+```
+
+Check what's currently installed with:
+
+```sh
+gcli --version
+```
 
 ## Development
 
@@ -151,8 +166,9 @@ git push origin v1.2.3
 
 This builds binaries for linux/darwin/windows (amd64/arm64), publishes them
 as a GitHub Release, and bakes the version/commit/date into the binary
-(`gcli --version`). `install.sh` / `install.ps1` always install whatever is
-tagged `latest`.
+(`gcli --version`). `install.sh` / `install.ps1` install whatever is tagged
+`latest` by default, or a specific tag via `GCLI_VERSION` (see
+[Updating](#updating)).
 
 ## Contributing
 

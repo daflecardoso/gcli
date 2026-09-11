@@ -2,10 +2,16 @@
 # Installs the latest gcli release for Linux or macOS.
 #
 #   curl -fsSL https://raw.githubusercontent.com/daflecardoso/gcli/main/install.sh | sh
+#
+# Install a specific version by setting GCLI_VERSION for the piped-to
+# shell (not curl, which wouldn't pass it along):
+#
+#   curl -fsSL https://raw.githubusercontent.com/daflecardoso/gcli/main/install.sh | GCLI_VERSION=v0.1.0 sh
 set -eu
 
 REPO="daflecardoso/gcli"
 INSTALL_DIR="${GCLI_INSTALL_DIR:-$HOME/.local/bin}"
+VERSION="${GCLI_VERSION:-latest}"
 
 info() { printf '\033[1;36m==>\033[0m %s\n' "$1"; }
 die() { printf '\033[1;31merror:\033[0m %s\n' "$1" >&2; exit 1; }
@@ -33,14 +39,18 @@ main() {
   GOOS="$(os)"
   GOARCH="$(arch)"
   ASSET="gcli_${GOOS}_${GOARCH}.tar.gz"
-  URL="https://github.com/${REPO}/releases/latest/download/${ASSET}"
+  if [ "$VERSION" = "latest" ]; then
+    URL="https://github.com/${REPO}/releases/latest/download/${ASSET}"
+  else
+    URL="https://github.com/${REPO}/releases/download/${VERSION}/${ASSET}"
+  fi
 
   TMP_DIR="$(mktemp -d)"
   trap 'rm -rf "$TMP_DIR"' EXIT
 
-  info "Downloading ${ASSET}..."
+  info "Downloading ${ASSET} (${VERSION})..."
   curl -fsSL "$URL" -o "$TMP_DIR/gcli.tar.gz" \
-    || die "download failed: $URL (no release built for ${GOOS}/${GOARCH}?)"
+    || die "download failed: $URL (no release built for ${GOOS}/${GOARCH}, or ${VERSION} doesn't exist?)"
 
   tar -xzf "$TMP_DIR/gcli.tar.gz" -C "$TMP_DIR"
 

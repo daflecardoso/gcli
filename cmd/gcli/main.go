@@ -15,9 +15,13 @@ import (
 
 func main() {
 	if len(os.Args) > 1 {
-		switch os.Args[len(os.Args)-1] {
+		switch os.Args[1] {
 		case "--update":
-			runUpdate()
+			targetVersion := ""
+			if len(os.Args) > 2 {
+				targetVersion = os.Args[2]
+			}
+			runUpdate(targetVersion)
 			return
 		case "--version", "-v":
 			fmt.Println("gcli " + version.String())
@@ -49,9 +53,13 @@ func main() {
 	}
 }
 
-func runUpdate() {
-	fmt.Println("Updating gcli...")
-	if err := update.Run(); err != nil {
+func runUpdate(targetVersion string) {
+	if targetVersion != "" {
+		fmt.Printf("Updating gcli to %s...\n", targetVersion)
+	} else {
+		fmt.Println("Updating gcli...")
+	}
+	if err := update.Run(targetVersion); err != nil {
 		fmt.Printf("\n🔴 Update failed: %v\n", err)
 		os.Exit(1)
 	}
